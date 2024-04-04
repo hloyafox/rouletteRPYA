@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Riviera Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Riviera Regular'), url('riviera.woff') format('woff');
+}
+
+.button {
+  position: absolute;
+  height: 500px;
+  width: 500px;
+  top: 30%;
+  right: 40%;
+  border-radius: 50%;
+  background-color: #ffb6c1;
+  font-size: 5rem;
+  color: #800000;
+  font-family: 'Riviera Regular';
+}
