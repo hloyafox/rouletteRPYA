@@ -321,17 +321,26 @@ animation end
 }
 .p {
   position: relative;
-  font-family: Riviera Regular;
-  font-size: 60rem;
 }
-.end div p {
+.end div h1 {
   margin: 0;
   position: absolute;
   top: 10%;
   left: 60%;
   color: #9e3f57;
   margin-right: -50%;
+  font-family: Riviera Regular;
+  font-size: 15rem;
   transform: translate(-50%, -50%);
+}
+.repeatButton {
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100px;
+  background-color: rgba(0, 125, 215, 0);
+  border: none;
 }
 .end div:nth-child(1) {
   transform: translateX(-300px);

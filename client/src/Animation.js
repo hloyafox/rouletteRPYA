@@ -1,6 +1,10 @@
 import './Animation.css';
+import { Repeat } from './Repeat';
 
 export function Animation({ name }) {
+  function handleRepeat() {
+    window.location.reload();
+  }
   return (
     <div className="anim hidden">
       <div className="circle">
@@ -23,8 +27,11 @@ export function Animation({ name }) {
       </div>
       <div className="end">
         <div className="p">
-          <p>{name}</p>
+          <h1>{name}</h1>
         </div>
+      </div>
+      <div>
+        <Repeat repeat={handleRepeat} />
       </div>
     </div>
   );

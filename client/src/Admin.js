@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Form } from './Form';
 import { NotExist } from './NotExist';
+import './Admin.css';
 
 export default function Admin() {
   const [allCard, setAllCard] = useState([]);
