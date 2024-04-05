@@ -320,10 +320,9 @@ animation end
   animation: end 1s 7.4s forwards;
 }
 .p {
-  height: 10em;
   position: relative;
   font-family: Riviera Regular;
-  font-size: larger;
+  font-size: 60rem;
 }
 .end div p {
   margin: 0;

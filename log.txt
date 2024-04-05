@@ -1,0 +1,5 @@
+GET /cards/1 4.531 ID: -, НАЗВАНИЕ: -
+GET /cards/2 1.696 ID: -, НАЗВАНИЕ: -
+POST /cards/change/16 2.800 ID: 16, НАЗВАНИЕ: 5 карт
+GET /admin 7.794 ID: -, НАЗВАНИЕ: -
+GET /admin/end 8.761 ID: -, НАЗВАНИЕ: -

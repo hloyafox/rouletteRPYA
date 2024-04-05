@@ -1,38 +1,54 @@
 import { Button } from './Button';
 import { Animation } from './Animation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Wheel.css';
 
 export default function Wheel() {
   const [nameCard, setNameCard] = useState(null);
-  const data = [
+  const [data, setData] = useState([]);
+  const resources = [
     {
       id: 1,
-      name: 'Очень длинное название на русском языке дизоксирибонуклеиновое',
-      count: 10,
+      name: 'Осколки ромашки:   10 шт',
     },
     {
       id: 2,
-      name: 'Очень длинное название на русском языке дизоксирибонуклеиновое2',
-      count: 5,
-    },
-    {
-      id: 3,
-      name: 'Очень длинное название на русском языке дизоксирибонуклеиновое3',
-      count: 10,
-    },
-    {
-      id: 4,
-      name: 'Очень длинное название на русском языке дизоксирибонуклеиновое4',
-      count: 5,
+      name: 'Осколки ромашки:   20 шт',
     },
   ];
 
-  const listItems = data.map(data => (
-    <div key={data.id} id={data.id} className="card col-2 hidden">
-      {data.name}
-    </div>
-  ));
+  function changeExsist(id, cardName) {
+    axios
+      .post(`http://localhost:3001/cards/change/${id}`, { id: id, name: cardName, exsist: 0 })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    let type = randomNumber(1, 4);
+
+    if (type !== 3) {
+      axios
+        .get(`http://localhost:3001/cards/${type}`)
+        .then(response => {
+          if (response.data.length > 0) {
+            setData(response.data);
+          } else {
+            setData(resources);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      setData(resources);
+    }
+  }, []);
 
   // Function to generate random number
   function randomNumber(min, max) {
@@ -41,12 +57,13 @@ export default function Wheel() {
 
   function handleClick() {
     let anim = document.querySelector('.anim');
-    let random = randomNumber(0, listItems.length - 1);
+    let random = randomNumber(0, data.length - 1);
     setNameCard(data[random].name);
-    let count = data[random].count;
-    data[random].count = count - 1;
-    console.log(data[random].count);
     anim.classList.remove('hidden');
+    if (data[random].type) {
+      let id = data[random].id;
+      changeExsist(id, data[random].name);
+    }
   }
 
   return (
