@@ -35,7 +35,7 @@ export function Form({ submit, changeName, changeType, changeScope }) {
             onChange={changeScope}
           ></input>
           <label className="col" htmlFor="inputType">
-            Количесвто
+            Количество
           </label>
         </div>
         <div className="col">

@@ -3,10 +3,13 @@ import { Animation } from './Animation';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Wheel.css';
+import useSound from 'use-sound';
+import music from './d.mp3';
 
 export default function Wheel() {
   const [nameCard, setNameCard] = useState(null);
   const [data, setData] = useState([]);
+  const [play] = useSound(music);
   const resources = [
     {
       id: 1,
@@ -63,6 +66,9 @@ export default function Wheel() {
     if (data[random].type) {
       let id = data[random].id;
       changeExsist(id, data[random].name);
+    }
+    if (data[random].name === 'РЕКЛАМА') {
+      play();
     }
   }
 
